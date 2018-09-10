@@ -1,0 +1,32 @@
+{
+    "name"       : "nano7/support",
+    "description": "The Nano7 Support package.",
+    "license"    : "GPL-3.0-only",
+
+    "authors": [
+        {
+            "name" : "Bruno Goncalves",
+            "email": "bugotech@gmail.com"
+        }
+    ],
+
+    "require": {
+        "php"                   : ">=5.5.0",
+        "illuminate/support"    : "5.4.*",
+        "vlucas/phpdotenv"      : "^2.4",
+        "nesbot/carbon"         : "^1.20"
+    },
+
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+
+        "psr-4": {
+            "Nano7\\Support\\": "src/"
+        }
+    },
+
+    "minimum-stability": "dev",
+    "prefer-stable"    : true
+}
