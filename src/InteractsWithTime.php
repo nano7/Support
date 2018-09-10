@@ -1,8 +1,8 @@
 <?php namespace Nano7\Support;
 
 use DateInterval;
-use Carbon\Carbon;
 use DateTimeInterface;
+use Nano7\Support\Carbon;
 
 trait InteractsWithTime
 {
