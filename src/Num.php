@@ -33,4 +33,26 @@ class Num
     {
         return round(($value * $percentage) / 100, $dec, $round);
     }
+
+    /**
+     * Calulcar digito com modulo 11 para CNPJ e CPF.
+     *
+     * @param $value
+     * @return int
+     */
+    public static function digit11($value)
+    {
+        $soma = 0;
+        $len = strlen($value);
+
+
+        for ($i = 1; $i <= $len; $i++) {
+            $soma = $soma + (intval($value[$i-1]) * ((($len + 1) - $i) + 1));
+        }
+        $resto = $soma - (intval($soma / 11) * 11);
+
+        $val = (($resto < 2) ? 0 : (11 - $resto));
+
+        return $val;
+    }
 }
