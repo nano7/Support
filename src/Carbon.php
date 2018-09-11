@@ -1,5 +1,7 @@
 <?php namespace Nano7\Support;
 
+use MongoDB\BSON\UTCDateTime;
+
 class Carbon extends \Carbon\Carbon
 {
     /**
@@ -25,5 +27,26 @@ class Carbon extends \Carbon\Carbon
         }
 
         return "há $diff $periods[$j]";
+    }
+
+    /**
+     * Create carbon via UTCDateTime do mongo.
+     *
+     * @param UTCDateTime $dateTime
+     * @return Carbon
+     */
+    public static function createFromMongoDateTime(UTCDateTime $dateTime)
+    {
+        return self::createFromTimestamp($dateTime->toDateTime()->getTimestamp());
+    }
+
+    /**
+     * Converte carbon para UTCDateTime dp Mongo.
+     *
+     * @return UTCDateTime
+     */
+    public function toMongoDateTime()
+    {
+        return new UTCDateTime($this->getTimestamp() * 1000);
     }
 }
